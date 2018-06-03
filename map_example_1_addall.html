@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Birdmap</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+<link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css' rel='stylesheet' type='text/css'>
+<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:60px; bottom:0; width:100%; }
+  
+  .leaflet-popup-content img {
+  max-width:100%;
+  }
+</style>
+</head>
+<body>
+<style>
+/** {*/
+/*      border: 1px solid rgba(0, 0, 0, 0.3);*/
+/*      margin: 0;*/
+/*      padding: 0;*/
+/*      box-sizing: border-box;*/
+/*}*/
+*{ font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';}
+
+body {
+      font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+      color: #000000;
+      background-color: #7cefba;
+    }
+    li {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+    }
+  
+header{
+    width: 100%;
+    height: 60px;
+    z-index: 2000;
+    background-color: #00fbb0;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  }
+
+.logo {
+  display: inline-block;
+  height: 36px;
+  margin: 12px 0 12px 25px;
+}
+.logo > img { height: 36px; }
+
+nav {
+  float: right;
+  }
+
+.nav-items > li {
+  display: inline-block;
+}
+
+.nav-items > li > a {
+  line-height: 30px;
+  padding: 0 30px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+.info {
+    position:absolute;
+    bottom:10px;
+    left:50%;
+    transform: translateX(-50%);
+    font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+  }
+
+.info div {
+    background:#fff;
+    padding:10px;
+    border-radius:3px;
+    font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+    }
+
+</style>
+
+<div id='map'></div>
+<div id='info' class='info'></div>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1Ijoib2hnYTk0IiwiYSI6ImNqZnI5bGc2NjEwZ2IzNG93ZjM2OHIxNjgifQ.3qLh0Je4oPqFiFv5y4T75A';
+//var imageUrl = 'images/Rain.png';
+var info = document.getElementById('info');
+var map = L.mapbox.map('map', 'empty-v8')
+    .setView([-12, -45], 4);
+    //처음 로딩될 때의 축척(지도 줌인 정도)
+
+var myLayer = L.mapbox.featureLayer().addTo(map);
+var mySecondLayer = L.mapbox.featureLayer().addTo(map);
+
+var geoJson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-39.4167, -7.3334]
+        },
+        properties: {
+            title: 'Araripe manakin',
+            description: '휘호- 흐힛흐힛!',
+            imgurl: '<img src="images/i-01.png">',
+            audio: '<iframe src="sv_AraripeManakin.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-01.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+    {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [146.190329, 70.776192]
+        },
+        properties: {
+            title: 'Siberian crane',
+            description: '으으~에',
+            imgurl: '<img src="images/i-07.png">',
+            audio: '<iframe src="sv_SiberianCrane.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-07.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+    {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-60.303334, 3.434086]
+        },
+        properties: {
+            title: 'Hoary-throated spinetail',
+            description: '껵힉?!',
+            imgurl: '<img src="images/i-02.png">',
+            audio: '<iframe src="sv_Hoary-throatedSpinetail.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-02.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+        {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-155.671667, 20.023056]
+        },
+        properties: {
+            title: 'Palila',
+            description: '훡흭허어-피리히힛?!',
+            imgurl: '<img src="images/i-05.png">',
+            audio: '<iframe src="sv_Palila.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-05.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+    {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-73.150075, 6.564921]
+        },
+        properties: {
+            title: "Niceforo's wren",
+            description: '허으- 허,허,허,허,허,허, 핏?!',
+            imgurl: '<img src="images/i-10.png">',
+            audio: '<iframe src="sv_Niceforo_sWren.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-10.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+    {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [150.245988, -33.092775]
+        },
+        properties: {
+            title: "Regent honeyeater",
+            description: '투둑!욱끼룩끼루끼룩끼?!',
+            imgurl: '<img src="images/i-09.png">',
+            audio: '<iframe src="sv_RegentHoneyeater.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-09.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+        {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-89.672217, -1.375842]
+        },
+        properties: {
+            title: "Waved albatross",
+            description: '으에응',
+            imgurl: '<img src="images/i-08.png">',
+            audio: '<iframe src="sv_WavedAlbatross.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-08.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+     {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-66.71887, 18.333656]
+        },
+        properties: {
+            title: "Puerto Rican amazon",
+            description: '위액-, 깩,객,객,객,객,객...!',
+            imgurl: '<img src="images/i-03.png">',
+            audio: '<iframe src="sv_PuertoRicanAmazon.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-03.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+         {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-74.419722, 10.967222]
+        },
+        properties: {
+            title: "Sapphire-bellied hummingbird",
+            description: '프르릇,프르릇,프릇-!',
+            imgurl: '<img src="images/i-04.png">',
+            audio: '<iframe src="sv_Sapphire-belliedHummingbird.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-04.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+             {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [116.075320, 5.978840]
+        },
+        properties: {
+            title: "Blue-banded kingfisher",
+            description: '싯,헷,쉿.',
+            imgurl: '<img src="images/i-11.png">',
+            audio: '<iframe src="sv_Blue-bandedKingfisher.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-11.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+    {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-4.359097, 55.841242]
+        },
+        properties: {
+            title: "Seychelles Paradise-flycatcher",
+            description: '오-엑, 오-엑, 위히 히힉 히힉 히힉!',
+            imgurl: '<img src="images/i-06.png">',
+            audio: '<iframe src="sv_SeyshellsParadaiseFlycatcher.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-06.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    },
+    {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: [-1.754173, 51.881649]
+        },
+        properties: {
+            title: 'Bali Myna',
+            description: '삑, 와-악, 옥, 힉?!',
+            imgurl: '<img src="images/i-12.png">',
+            audio: '<iframe src="sv_BaliMyna.html" width="100%" height="175px" frameborder="0">',
+            "icon": {
+              "iconUrl": "images/i-12.png",
+              "iconSize": [100, 100], // size of the icon
+              "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
+              "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
+              "className": "dot"
+          },
+            'marker-color': '#548cba'
+        }
+    }
+  ]
+};
+
+myLayer.on('layeradd', function(e) {
+    var marker = e.layer,
+        feature = marker.feature;
+    
+    marker.setIcon(L.icon(feature.properties.icon));
+        var popupContent =  '<p style="text-align : center;">' + feature.properties.description + '</p>' +
+                        '<p style="display : flex; justify-content : center; align-items : center;">' + feature.properties.audio + '</p>';
+
+    // http://leafletjs.com/reference.html#popup
+    marker.bindPopup(popupContent,{
+        closeButton: false,
+        minWidth: 320
+    });
+});
+
+myLayer.setGeoJSON(geoJson);
+
+// Listen for individual marker clicks.
+myLayer.on('click',function(e) {
+    // Force the popup closed.
+    map.panTo(e.layer.getLatLng());
+    ////e.layer.closePopup();
+
+    var feature = e.layer.feature;
+    var content = '<div><h1 style="text-align : center;">' + feature.properties.title + '</h1>';
+                  '<p>' + feature.properties.description + '</p>';
+    info.innerHTML = content;
+});
+
+
+// Clear the tooltip when map is clicked.
+// map.on('move', empty);
+
+// // Trigger empty contents when the script
+// // has loaded on the page.
+// empty();
+
+
+// function empty() {
+//   info.innerHTML = '<div><strong>Click a marker</strong></div>';
+//   }
+  
+  //blue
+  //mapbox://styles/ohga94/cjgtxg5d0000z2rmhqk45fpsl
+  //green
+  //mapbox://styles/ohga94/cjgtyebs8001d2sp5z8nll5tq
+  //mapbox://styles/ohga94/cjgsvswu200032ro43hs5uim9
+  //north star
+  //mapbox://styles/ohga94/cjgsu8q76000c2sqa3jzfdw39
+  
+L.mapbox.styleLayer('mapbox://styles/ohga94/cjhxfycb12e732rozw3sz0rhw').addTo(map);
+
+</script>
+
+  <div id="wrap">
+    <header>
+      <a class="logo" href="#home"><img src="images/bm_mark2-01.png" height="36px"></a>
+      <nav>
+        <ul class="nav-items">
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+  
+</body>
+</html>

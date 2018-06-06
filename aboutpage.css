@@ -1,0 +1,31 @@
+*{ 
+    font-family: 'Merriweather', serif;
+    padding: 2%;
+}
+  
+body{
+     list-style: none;
+     background-color: #00fbb0;
+}  
+  
+img {
+    width:50%;
+}
+
+li {
+    display: inline-block;
+    color : #ffffff;
+}
+section {
+    background-color: #ffffff;
+    padding-bottom: 5%;
+}
+/*table {*/
+/*    padding: 5%;*/
+/*}*/
+
+.card-body {
+    min-height: 300px;
+    min-width: 300px;
+    margin-right: 5px;
+}

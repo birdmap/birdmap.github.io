@@ -6,6 +6,7 @@
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Merriweather:900i" rel="stylesheet">
 <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
 <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
 <style>
@@ -25,12 +26,12 @@
 /*      padding: 0;*/
 /*      box-sizing: border-box;*/
 /*}*/
-*{ font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';}
+*{ font-family: 'Merriweather', serif;}
 
 body {
-      font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+      font-family: 'Merriweather', serif;
       color: #000000;
-      background-color: #7cefba;
+      background-color: #00fbb0;
     }
     li {
       list-style: none;
@@ -42,9 +43,9 @@ body {
 header{
     width: 100%;
     height: 60px;
-    z-index: 2000;
+    z-index: 10000;
     background-color: #00fbb0;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 10px 2px rgba(0, 0, 0, 0.5);
   }
 
 .logo {
@@ -93,7 +94,7 @@ nav {
 L.mapbox.accessToken = 'pk.eyJ1Ijoib2hnYTk0IiwiYSI6ImNqZnI5bGc2NjEwZ2IzNG93ZjM2OHIxNjgifQ.3qLh0Je4oPqFiFv5y4T75A';
 //var imageUrl = 'images/Rain.png';
 var info = document.getElementById('info');
-var map = L.mapbox.map('map', 'empty-v8')
+var map = L.mapbox.map('map', 'empty-v8', { zoomControl: false })
     .setView([-12, -45], 4);
     //처음 로딩될 때의 축척(지도 줌인 정도)
 
@@ -116,7 +117,7 @@ var geoJson = {
             audio: '<iframe src="sv_AraripeManakin.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-01.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -137,7 +138,7 @@ var geoJson = {
             audio: '<iframe src="sv_SiberianCrane.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-07.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -158,7 +159,7 @@ var geoJson = {
             audio: '<iframe src="sv_Hoary-throatedSpinetail.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-02.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -179,7 +180,7 @@ var geoJson = {
             audio: '<iframe src="sv_Palila.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-05.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -200,7 +201,7 @@ var geoJson = {
             audio: '<iframe src="sv_Niceforo_sWren.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-10.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -221,7 +222,7 @@ var geoJson = {
             audio: '<iframe src="sv_RegentHoneyeater.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-09.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -242,7 +243,7 @@ var geoJson = {
             audio: '<iframe src="sv_WavedAlbatross.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-08.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -263,7 +264,7 @@ var geoJson = {
             audio: '<iframe src="sv_PuertoRicanAmazon.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-03.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -284,7 +285,7 @@ var geoJson = {
             audio: '<iframe src="sv_Sapphire-belliedHummingbird.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-04.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -305,7 +306,7 @@ var geoJson = {
             audio: '<iframe src="sv_Blue-bandedKingfisher.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-11.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -326,7 +327,7 @@ var geoJson = {
             audio: '<iframe src="sv_SeyshellsParadaiseFlycatcher.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-06.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -347,7 +348,7 @@ var geoJson = {
             audio: '<iframe src="sv_BaliMyna.html" width="100%" height="175px" frameborder="0">',
             "icon": {
               "iconUrl": "images/i-12.png",
-              "iconSize": [100, 100], // size of the icon
+              "iconSize": [100, 114], // size of the icon
               "iconAnchor": [50, 50], // point of the icon which will correspond to marker's location
               "popupAnchor": [0, -50], // point from which the popup should open relative to the iconAnchor
               "className": "dot"
@@ -382,7 +383,7 @@ myLayer.on('click',function(e) {
     ////e.layer.closePopup();
 
     var feature = e.layer.feature;
-    var content = '<div><h1 style="text-align : center;">' + feature.properties.title + '</h1>';
+    var content = '<div><h2 style="text-align : center;">' + feature.properties.title + '</h2>';
                   '<p>' + feature.properties.description + '</p>';
     info.innerHTML = content;
 });
@@ -408,16 +409,16 @@ myLayer.on('click',function(e) {
   //north star
   //mapbox://styles/ohga94/cjgsu8q76000c2sqa3jzfdw39
   
-L.mapbox.styleLayer('mapbox://styles/ohga94/cjhxfxd4t2eaj2rmjywsqz4uf').addTo(map);
+L.mapbox.styleLayer('mapbox://styles/ohga94/cjhxfycb12e732rozw3sz0rhw').addTo(map);
 
 </script>
 
   <div id="wrap">
     <header>
-      <a class="logo" href="#home"><img src="images/bm_mark2-01.png" height="36px"></a>
+      <a class="logo" href="index.html"><img src="images/birdmap_logo-01.png" height="36px"></a>
       <nav>
         <ul class="nav-items">
-          <li><a href="#about">About</a></li>
+          <li><a href="about_birds.html">About</a></li>
         </ul>
       </nav>
     </header>

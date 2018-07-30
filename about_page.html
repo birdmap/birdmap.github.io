@@ -31,31 +31,49 @@ body{
   padding-top: 12px;
   padding-left: 25px;
   padding-bottom: 8%;
-  position:fixed;
+  /*position:fixed;*/
   color:white;
   font-family: 'Merriweather', serif;
   font-weight: bold;
 }
 
 .container-fluid {
-  padding-top:50%; 
+  padding-top:5%; 
   padding-left: 25px;
   padding-right: 2%;
   font-family: 'Merriweather', serif;
 }
+
+.row flex-row flex-nowrap{
+    position: relative;
+    
+    
+}
+
 
 .card-block {
     background: #fff;
     min-height: 220px;
     padding:5%;
 }
+
+.copy p{
+    display: inline;
+}
+/*a {*/
+/*    text-decoration:none;*/
+/*}*/
   </style>
   
 </head>
 <body>
 <div class="fixed">
 <a href="index.html"><img src = "images/birdmap_logo-01.png" height="36px"/></a>
-<h2 style="padding-top:16px">birdmap is a project about 12 birds, which are endangered across the world. </h2>
+<h2 style="padding-top:16px">Birdmap is a project about 12 birds, which are critically endangered across the world. </h2>
+<p style="padding-top:12px">Among a lot of birds, Birdmap focus on 12 birds, which is critically threatened by destroying their habitats.</p>
+<p>To build up this page, I looked up what kind of birds is endangered now, and chose 12 birds randomly. then I collected some of their information through Wikipedia, and sound files from <a href="https://www.xeno-canto.org/">xeno-canto.org</a> and <a href="https://www.hbw.com/">hbw.com</a>.</p>
+<p>I wanted to show how each bird looks and how their sounds like. each bird is marked on the spot where its sound is recorded.</p>
+<p>If you click a stamp shaped icon, you can hear the birds' voices. but this page doesn't work with mobile devices, so I recommend using PC.</p>
 </div>
 
 <div class="container-fluid">
@@ -386,7 +404,10 @@ body{
                 </div>
         </div>
     </div>
-    <p style="padding-top:8%; color:white">copyright</p>
+    <div class="copy">
+        <p style="padding-top:8%; color:white">copyright</p>
+        <p style="padding-left:4%; color:white">all illustrations by twitter@weeklyflower</p>
+    </div>
 </div>
 </body>
 </html>
